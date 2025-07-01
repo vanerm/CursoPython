@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+<main class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Camada</th>
+                <th>Profesor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td>{{ curso.nombre }}</td>
+                    <td>{{ curso.camada }}</td>
+                    <td>{{ curso.profesor }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay cursos disponibles</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+</main>
+{% endblock %}
