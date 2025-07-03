@@ -12,7 +12,7 @@ def cursos(request):
     cursos_dictionary = {
         "cursos": cursos_list
     }
-    plantilla = loader.get_template("plantilla.html")
+    plantilla = loader.get_template("cursos.html")
     documento = plantilla.render(cursos_dictionary, request)
     return HttpResponse(documento)
 
@@ -24,3 +24,6 @@ def alta_curso(request, nombre):
 
 def profesores(request):
     return render(request, "profesores.html")
+
+def alumnos(request):
+    return render(request, "alumnos.html")

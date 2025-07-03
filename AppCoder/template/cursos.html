@@ -5,26 +5,19 @@
 
 {% block contenido %}
 <main class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Camada</th>
-                <th>Profesor</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for curso in cursos %}
-                <tr>
-                    <td>{{ curso.nombre }}</td>
-                    <td>{{ curso.camada }}</td>
-                    <td>{{ curso.profesor }}</td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="3">No hay cursos disponibles</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>camada</th>
+        </tr>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.camada }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </main>
 {% endblock %}
