@@ -5,7 +5,7 @@ from django.template import loader
 
 # Create your views here.
 def inicio(request):
-    return HttpResponse("Bienvenidos a la AppCoder")
+    return render(request, "padre.html")
 
 def cursos(request):
     cursos_list = Curso.objects.all()
