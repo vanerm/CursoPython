@@ -43,3 +43,13 @@ def curso_formulario(request):
     else:
        mi_formulario = Curso_formulario()
     return render( request , "formulario.html", {"formulario": mi_formulario})
+
+def buscar_curso(request):
+    return render(request, "buscar_curso.html")
+
+def buscar(request):
+    if request.POST["nombre"]:
+        cursos = Curso.objects.filter(nombre__icontains=request.POST["nombre"])
+        return render(request, "resultado_busqueda.html", {"cursos":cursos})
+    else:
+        return HttpResponse("No se ha encontrado nada")
