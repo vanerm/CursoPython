@@ -2,10 +2,10 @@
 {% load static %}
 {% block contenido %}
 <ul>
-    <h1>Buscar tu curso</h1> 
-    <br>
     <form method="POST" action="alta_curso", class="container">
         {% csrf_token %}
+        <h1>Agregar curso</h1> 
+        <br>
         <p>Nombre del curso:</p>
         <input type="text" name="nombre" required>
         <br>
