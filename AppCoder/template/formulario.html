@@ -1,15 +1,20 @@
 {% extends "padre.html" %}
 {% load static %}
 {% block contenido %}
-
+<ul>
+    <h1>Buscar tu curso</h1> 
+    <br>
     <form method="POST" action="alta_curso", class="container">
         {% csrf_token %}
         <p>Nombre del curso:</p>
         <input type="text" name="nombre" required>
+        <br>
+        <br>
         <p>Camada:</p>
         <input type="text" name="camada" required>
         <br>
+        <br>
         <input type="submit" value="Agregar curso">
     </form>
-
+</ul>
 {% endblock %}

@@ -4,10 +4,27 @@
 
     {% if cursos%}
         <ul>
+            <h1>Resultados de la búsqueda</h1>
+            <p>Se encontraron {{cursos|length}} cursos</p>
+            <br>
+            <main class="container">
+            <table class="table">
+                <tr>
+                    <th>id</th>
+                    <th>nombre</th>
+                    <th>camada</th>
+                </tr>
             {% for curso in cursos%}
-                <li>Nombre: {{curso.nombre}}</li>
-                <li>Camada: {{curso.camada}}</li>
+                <tr>
+                    <td>{{ curso.id }}</td>
+                    <td>{{ curso.nombre }}</td>
+                    <td>{{ curso.camada }}</td>
+                </tr>
             {% endfor %}
+            </table>
+            <a href ="{% url 'curso_formulario' %}" class="btn btn-primary">Nuevo Curso</a>
+            <a href ="{% url 'buscar_curso' %}" class="btn btn-primary">Buscar Curso</a>
+            </main>
         </ul>
     {% else %}
         <p>No se encontraron cursos</p>
