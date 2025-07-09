@@ -55,9 +55,6 @@ def alumnos(request):
     documento = plantilla.render(alumnos_dictionary, request)
     return HttpResponse(documento)
 
-
-
-
 def alta_alumno(request, nombre, dni):
     nuevo_alumno = Alumno(nombre=nombre, dni=dni)
     nuevo_alumno.save()
@@ -87,7 +84,40 @@ def buscar_alumno_resultado(request):
     
 # PROFESORES
 def profesores(request):
-    return render(request, "profesores.html")
+    profesores_list = Profesor.objects.all()
+    profesores_dictionary = {
+        "profesores": profesores_list
+    }
+    plantilla = loader.get_template("profesores.html")
+    documento = plantilla.render(profesores_dictionary, request)
+    return HttpResponse(documento)
+
+def alta_profesor(request, nombre, especialidad):
+    nuevo_profesor = Profesor(nombre=nombre, especialidad=especialidad)
+    nuevo_profesor.save()
+    return HttpResponse(f"Profesor {nuevo_profesor.nombre} agregado con éxito")
+
+def profesor_formulario(request):
+    if request.method == "POST":
+        mi_formulario = Profesor_formulario(request.POST)
+        if mi_formulario.is_valid():
+            datos = mi_formulario.cleaned_data
+            profesor = Profesor(nombre=datos["nombre"], especialidad=datos["especialidad"])
+            profesor.save()
+            return render(request, "padre.html")
+    else:
+        mi_formulario = Profesor_formulario()
+    return render(request, "profesor_formulario.html", {"profesor_formulario": mi_formulario})
+
+# Buscar profesor
+def buscar_profesor(request):
+    return render(request, "buscar_profesor.html")
+def buscar_profesor_resultado(request):
+    if request.POST["nombre"]:
+        profesores = Profesor.objects.filter(nombre__icontains=request.POST["nombre"])
+        return render(request, "resultado_busqueda_profesor.html", {"profesores": profesores})
+    else:
+        return HttpResponse("No se ha encontrado profesores con ese nombre")
 
 # Contacto
 def contacto(request):

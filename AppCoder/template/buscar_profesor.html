@@ -1,0 +1,14 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+<ul>
+    <form method="POST" action="{% url 'buscar_profesor_resultado' %}" class="container">
+        {% csrf_token %}
+        <h1>Buscar Profesor</h1> 
+        <br>
+        <p>Nombre del profesor:</p>
+        <input type="text" name="nombre" required>
+        <input type="submit" value="Enviar">
+    </form>
+</ul>
+{% endblock %}

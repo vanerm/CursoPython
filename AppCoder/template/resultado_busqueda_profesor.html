@@ -1,0 +1,32 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+
+    {% if profesores%}
+        <ul>
+            <h1>Resultados de la búsqueda</h1>
+            <p>Se encontraron {{profesores|length}} profesores</p>
+            <br>
+            <main class="container">
+            <table class="table">
+                <tr>
+                    <th>id</th>
+                    <th>nombre</th>
+                    <th>especialidad</th>
+                </tr>
+            {% for profesor in profesores %}
+                <tr>
+                    <td>{{ profesor.id }}</td>
+                    <td>{{ profesor.nombre }}</td>
+                    <td>{{ profesor.especialidad }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+            <a href ="{% url 'profesor_formulario' %}" class="btn btn-primary">Nuevo Profesor</a>
+            <a href ="{% url 'buscar_profesor' %}" class="btn btn-primary">Buscar Profesor</a>
+            </main>
+        </ul>
+    {% else %}
+        <p>No se encontraron profesores</p>
+    {% endif %}
+{% endblock %}

@@ -2,18 +2,28 @@
 
 {% load static %}
 
-{% block titulo %}
-    <h1>Profesores</h1>
-{% endblock %}
-
 {% block contenido %}
+<ul>
+<h1 class="text-center">Listado de Profesores</h1>
+<p class="text-center">Se encontraron {{profesores|length}} profesores</p>
 <main class="container">
-    <ul>
-       <li>Profesor 1</li>
-       <li>Profesor 2</li>
-       <li>Profesor 3</li>
-       <li>Profesor 4</li>
-       <li>Profesor 5</li>
-    </ul>
-</main>
+    <table class="table">
+        <tr>
+            <th>id</th>
+                <th>nombre</th>
+                <th>especialidad</th>
+            </tr>
+            {% for profesor in profesores %}
+            <tr>
+                <td>{{ profesor.id }}</td>
+                <td>{{ profesor.nombre }}</td>
+                <td>{{ profesor.especialidad }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href ="{% url 'profesor_formulario' %}" class="btn btn-primary">Nuevo Profesor</a>
+        <a href ="{% url 'buscar_profesor' %}" class="btn btn-primary">Buscar Profesor</a>
+    </main>
+</ul>
+
 {% endblock %}

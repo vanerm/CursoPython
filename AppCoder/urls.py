@@ -13,6 +13,9 @@ urlpatterns = [
     path('buscar', views.buscar, name='buscar'),
     # PROFESORES
     path('profesores/', views.profesores, name='profesores'),
+    path('alta_profesor', views.profesor_formulario, name='profesor_formulario'),
+    path('buscar_profesor/', views.buscar_profesor, name='buscar_profesor'),
+    path('buscar_profesor_resultado', views.buscar_profesor_resultado, name='buscar_profesor_resultado'),
     # ALUMNOS
     path('alumnos/', views.alumnos, name='alumnos'),
     path('alta_alumno', views.alumno_formulario, name='alumno_formulario'),
