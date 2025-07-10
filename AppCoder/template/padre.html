@@ -17,7 +17,7 @@
         <link href="{% static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
 
         <!-- Custom styles for this template-->
-         <style>
+        <style>
         body {
         background-color: rgb(42, 44, 62) !important;
         color: #fff !important; /* Texto claro para mejor contraste */
@@ -31,6 +31,10 @@
         background-color: rgb(220, 240, 90) !important;
         border-color: rgb(220, 240, 90) !important;
         color: #222 !important;
+        }
+        .navbar-translucent {
+        background-color: rgba(28, 31, 48, 0.7) !important;
+        backdrop-filter: blur(8px);
         }
         </style>     
     </head>
@@ -194,5 +198,22 @@
             height: 38px;
         }
         </style>
+    <!-- ...otros scripts... -->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <!-- Botón flotante de WhatsApp -->
+        <!-- ...tu código del botón... -->
+
+        <!-- Script para navbar traslúcida al hacer scroll -->
+        <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('navbar-translucent');
+            } else {
+                navbar.classList.remove('navbar-translucent');
+            }
+        });
+        </script>
     </body>
 </html>
