@@ -13,12 +13,18 @@
                 <th>id</th>
                 <th>nombre</th>
                 <th>camada</th>
+                <th style="width: 50px;">Acciones</th>
             </tr>
             {% for curso in cursos %}
             <tr>
                 <td>{{ curso.id }}</td>
                 <td>{{ curso.nombre }}</td>
                 <td>{{ curso.camada }}</td>
+                <td class="text-center">
+                    <a href="{% url 'eliminar_curso' curso.id %}" title="Eliminar" onclick="return confirm('¿Seguro que deseas eliminar este curso?');">
+                        <i class="bi bi-trash text-danger"></i>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </table>

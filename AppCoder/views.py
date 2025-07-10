@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from AppCoder.models import Curso, Alumno, Profesor
 from django.template import loader
 from AppCoder.forms import Curso_formulario, Alumno_formulario, Profesor_formulario 
+from django.contrib import messages
+from django.shortcuts import redirect
 
 # Create your views here.
 def inicio(request):
@@ -44,6 +46,13 @@ def buscar(request):
         return render(request, "resultado_busqueda.html", {"cursos":cursos})
     else:
         return HttpResponse("No se ha encontrado cursos con ese nombre")
+    
+def eliminar_curso(request, id):
+    curso = Curso.objects.get(id=id)
+    curso.delete()
+    # Use messages framework to show success message
+    messages.success(request, f"Curso {curso.nombre} eliminado con éxito")
+    return redirect('cursos')
 
 # ALUMNOS
 def alumnos(request):
