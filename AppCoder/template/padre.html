@@ -15,17 +15,35 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
+
+        <!-- Custom styles for this template-->
+         <style>
+        body {
+        background-color: rgb(42, 44, 62) !important;
+        color: #fff !important; /* Texto claro para mejor contraste */
+        }
+        .btn-primary {
+            background-color: rgb(235, 255, 106) !important;
+            border-color: rgb(235, 255, 106) !important;
+            color: #222 !important; /* Texto oscuro para mejor contraste */
+        }
+        .btn-primary:hover, .btn-primary:focus {
+        background-color: rgb(220, 240, 90) !important;
+        border-color: rgb(220, 240, 90) !important;
+        color: #222 !important;
+        }
+        </style>     
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-light bg-light static-top">
+        <nav class="navbar navbar-light fixed-top" style="background-color: rgb(28, 31, 48)">
             <div class="container">
-                <a class="navbar-brand" href="#!">App Coder</a>
+                <a class="navbar-brand text-white fw-bold" style="letter-spacing:1px; font-size:2rem;" href="{% url 'padre' %}">AppCoder</a>
                 <a class="btn btn-primary" href="{% url 'profesores' %}">Profesores</a>
                 <a class="btn btn-primary" href="{% url 'alumnos' %}">Alumnos</a>
                 <a class="btn btn-primary" href="{% url 'cursos' %}">Cursos</a>
                 <a class="btn btn-danger" href="#login">Login</a>
-                <a class="btn btn-dark" href="#signup">Signup</a>
+                <a class="btn btn-danger" href="#signup">Signup</a>
             </div>
         </nav>
         <!-- Masthead-->
@@ -82,36 +100,56 @@
         {% endblock %}
 
         <!-- Footer-->
-        <footer class="footer bg-light">
+        <footer class="footer" style="background-color: rgb(28, 31, 48); color: #fff;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Acerca de la App</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="{% url 'contacto' %}">Contacto</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Términos de Uso</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Política de Privacidad</a></li>
+                            <li class="list-inline-item"><a class="text-white" href="https://www.coderhouse.com/ar" target="_blank">Acerca de la App</a></li>
+                            <li class="list-inline-item text-white">⋅</li>
+                            <li class="list-inline-item"><a class="text-white" href="{% url 'contacto' %}">Contacto</a></li>
+                            <li class="list-inline-item text-white">⋅</li>
+                            <li class="list-inline-item"><a class="text-white" href="https://www.coderhouse.com/ar" target="_blank">Términos de Uso</a></li>
+                            <li class="list-inline-item text-white">⋅</li>
+                            <li class="list-inline-item"><a class="text-white" href="https://www.coderhouse.com/ar" target="_blank">Política de Privacidad</a></li>
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; App Coder 2025. Todos los derechos reservados. <data id="currentYear"></data> </p>
+                        <p class="text-white small mb-4 mb-lg-0">&copy; App Coder 2025. Todos los derechos reservados. <data id="currentYear"></data> </p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
                                 <a href="https://www.linkedin.com/school/coderhouse/posts/?feedView=all" target="_blank">
-                                    <i class="bi-linkedin fs-3"></i>
+                                    <i class="bi-linkedin fs-3 text-white"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/Coderhouse/" target="_blank">
+                                    <i class="bi-facebook fs-3 text-white"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item me-4">
                                 <a href="https://twitter.com/coderhouse" target="_blank">
-                                    <i class="bi-twitter fs-3"></i>
+                                    <i class="bi-twitter fs-3 text-white"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="https://www.instagram.com/coderhouse/" target="_blank">
-                                    <i class="bi-instagram fs-3"></i>
+                                    <i class="bi-instagram fs-3 text-white"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.youtube.com/channel/UCeFRG6700bzqYI0M_9vyelw/videos" target="_blank">
+                                    <i class="bi-youtube fs-3 text-white"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.twitch.tv/coderhouse" target="_blank">
+                                    <i class="bi-twitch fs-3 text-white"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://discord.com/invite/js5X5SDYSr" target="_blank">
+                                    <i class="bi-discord fs-3 text-white"></i>
                                 </a>
                             </li>
                         </ul>
@@ -119,6 +157,7 @@
                 </div>
             </div>
         </footer>
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -128,5 +167,30 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <!-- Botón flotante de WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=5491156175099&text=Hola+Coderhouse%21+Tengo+una+consulta+sobre&type=phone_number&app_absent=0" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="width:48px; height:48px;">
+        </a>
+        <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background-color: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        .whatsapp-float img {
+            width: 38px;
+            height: 38px;
+        }
+        </style>
     </body>
 </html>
