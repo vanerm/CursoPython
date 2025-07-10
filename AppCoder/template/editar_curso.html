@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+<ul>
+    <form method="POST" action="{% url 'editar_curso' curso.id %}" class="container">
+        {% csrf_token %}
+        <h1>Editar curso</h1> 
+        <br>
+        <p>Nombre del curso:</p>
+        <input type="text" name="nombre" value="{{ curso.nombre }}" required>
+        <br>
+        <br>
+        <p>Camada:</p>
+        <input type="text" name="camada" value="{{ curso.camada }}" required>
+        <br>
+        <br>
+        <input type="submit" value="Guardar cambios" class="btn btn-primary">
+        <br>
+        <br>
+    </form>
+</ul>
+{% endblock %}

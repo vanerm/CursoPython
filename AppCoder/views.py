@@ -54,6 +54,16 @@ def eliminar_curso(request, id):
     messages.success(request, f"Curso {curso.nombre} eliminado con éxito")
     return redirect('cursos')
 
+def editar_curso(request, id):
+    curso = Curso.objects.get(id=id)
+    if request.method == "POST":
+        curso.nombre = request.POST["nombre"]
+        curso.camada = request.POST["camada"]
+        curso.save()
+        messages.success(request, f"Curso {curso.nombre} editado con éxito")
+        return redirect('cursos')
+    return render(request, "editar_curso.html", {"curso": curso})
+
 # ALUMNOS
 def alumnos(request):
     alumnos_list = Alumno.objects.all()
