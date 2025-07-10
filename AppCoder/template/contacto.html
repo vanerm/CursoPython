@@ -3,35 +3,60 @@
 {% load static %}
 
 {% block contenido %}
+    
+    <head>   
+        <style>
+            .contacto-bg {
+                background: #fff !important;
+                color: #222 !important;
+                border-radius: 10px;
+                padding: 2rem;
+                margin-top: 2rem;
+            }
+            .contacto-bg .form-control {
+                background: #fff !important;
+                color: #222 !important;
+            }
+            .contacto-bg .form-control::placeholder {
+                color: #888 !important;
+                opacity: 1 !important;
+            }
+            .contacto-bg label,
+            .contacto-bg .invalid-feedback {
+                color: #222 !important;
+            }
+        </style>
+    </head>   
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 contacto-bg">
                 <h1>Contacto</h1>
                 <p>Si tienes alguna duda, por favor completa el siguiente formulario:</p>
                 <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                     <!-- Name input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                        <input class="form-control" id="name" type="text" placeholder=" " data-sb-validations="required" />
                         <label for="name">Nombre completo</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre.</div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="email" type="email" placeholder="
-Enter your email..." data-sb-validations="required,email" />
+                        <input class="form-control" id="email" type="email" placeholder=" " data-sb-validations="required,email" />
                         <label for="email">Email</label>
                         <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere un email.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">El email no es válido.</div>
                     </div>
                     <!-- Message input-->
                     <div class="form-floating mb-3">        
-                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem;" data-sb-validations="required"></textarea>
+                        <textarea class="form-control" id="message" type="text" placeholder=" " style="height: 10rem;" data-sb-validations="required"></textarea>
                         <label for="message">Mensaje</label>
                         <div class="invalid-feedback" data-sb-feedback="message:required">Se requiere un mensaje.</div>
                     </div>
                     <!-- Submit Button-->
-                    <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Enviar</button>
+                    <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button>
+                    <br>
+                    <br>
                 </form>
                 <!-- Submit success message-->
                 <div class="d-none" id="submitSuccessMessage">
@@ -48,4 +73,6 @@ Enter your email..." data-sb-validations="required,email" />
             </div>
         </div>
     </div>  
+    <br>
+    <br> 
 {% endblock %}

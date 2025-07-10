@@ -4,11 +4,11 @@
 
     {% if alumnos%}
         <ul>
-            <h1>Resultados de la búsqueda</h1>
-            <p>Se encontraron {{alumnos|length}} alumnos</p>
+            <h1 class="text-center">Resultados de la búsqueda</h1>
+            <p class="text-center">Se encontraron {{alumnos|length}} alumnos</p>
             <br>
-            <main class="container">
-            <table class="table">
+            <main class="container text-white">
+            <table class="table text-white">
                 <tr>
                     <th>id</th>
                     <th>nombre</th>
@@ -22,7 +22,7 @@
                 </tr>
             {% endfor %}
             </table>
-            <a href ="{% url 'alumno_formulario' %}" class="btn btn-primary">Nuevo Alumno</a>
+            <a href ="{% url 'alumno_formulario' %}" class="btn btn-primary me-2">Nuevo Alumno</a>
             <a href ="{% url 'buscar_alumno' %}" class="btn btn-primary">Buscar Alumno</a>
             </main>
         </ul>
