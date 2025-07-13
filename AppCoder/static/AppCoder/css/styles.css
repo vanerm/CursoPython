@@ -10894,6 +10894,12 @@ header.masthead h1, header.masthead .h1 {
   box-shadow: 0px 5px 5px 0px #adb5bd;
 }
 
+.testimonial-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
 .call-to-action {
   position: relative;
   background-color: #343a40;
@@ -10912,6 +10918,39 @@ header.masthead h1, header.masthead .h1 {
   left: 0;
   opacity: 0.5;
 }
+
+.brand {
+  font-size: 1.5rem;
+  margin: 0 20px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.pedidosya {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff0040;
+}
+
+.rappi {
+  font-family: 'Pacifico', cursive;
+  color: #ff5722;
+}
+
+.binance {
+  font-family: 'Rubik', sans-serif;
+  color: #f0b90b;
+}
+
+.uala {
+  font-family: 'Poppins', sans-serif;
+  color: #6f42c1;
+}
+
+.cocos {
+  font-family: 'Ubuntu', sans-serif;
+  color: #00cec9;
+}
+
 
 footer.footer {
   padding-top: 4rem;
