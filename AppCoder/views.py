@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 
 # Create your views here.
 def inicio(request):
-    return render(request, "padre.html")
+    return render(request, "inicio.html")
 
 # CURSOS
 def cursos(request):
