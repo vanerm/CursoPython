@@ -18,11 +18,15 @@ urlpatterns = [
     path('alta_profesor', views.profesor_formulario, name='profesor_formulario'),
     path('buscar_profesor/', views.buscar_profesor, name='buscar_profesor'),
     path('buscar_profesor_resultado', views.buscar_profesor_resultado, name='buscar_profesor_resultado'),
+    path('eliminar_profesor/<int:id>', views.eliminar_profesor, name='eliminar_profesor'),
+    path('editar_profesor/<int:id>', views.editar_profesor, name='editar_profesor'),
     # ALUMNOS
     path('alumnos/', views.alumnos, name='alumnos'),
     path('alta_alumno', views.alumno_formulario, name='alumno_formulario'),
     path('buscar_alumno/', views.buscar_alumno, name='buscar_alumno'),
     path('buscar_alumno_resultado', views.buscar_alumno_resultado, name='buscar_alumno_resultado'),
+    path('eliminar_alumno/<int:id>', views.eliminar_alumno, name='eliminar_alumno'),
+    path('editar_alumno/<int:id>', views.editar_alumno, name='editar_alumno'),
     # LOGIN
     path('login/', views.inicio, name='login'),
     # SIGNUP

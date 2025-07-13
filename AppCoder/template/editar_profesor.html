@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+<ul>
+    <form method="POST" action="{% url 'editar_profesor' profesor.id %}" class="container">
+        {% csrf_token %}
+        <h1>Editar profesor</h1> 
+        <br>
+        <p>Nombre del profesor:</p>
+        <input type="text" name="nombre" value="{{ profesor.nombre }}" required>
+        <br>
+        <br>
+        <p>Especialidad:</p>
+        <input type="text" name="especialidad" value="{{ profesor.especialidad }}" required>
+        <br>
+        <br>
+        <input type="submit" value="Guardar cambios" class="btn btn-primary">
+        <br>
+        <br>
+    </form>
+</ul>
+{% endblock %}

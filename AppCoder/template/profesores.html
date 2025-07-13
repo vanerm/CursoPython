@@ -12,12 +12,24 @@
             <th>id</th>
                 <th>nombre</th>
                 <th>especialidad</th>
+                <th style="width: 50px;">Eliminar</th>
+                <th style="width: 50px;">Editar</th>
             </tr>
             {% for profesor in profesores %}
             <tr>
                 <td>{{ profesor.id }}</td>
                 <td>{{ profesor.nombre }}</td>
                 <td>{{ profesor.especialidad }}</td>
+                <td class="text-center">
+                    <a href="{% url 'eliminar_profesor' profesor.id %}" title="Eliminar" onclick="return confirm('¿Seguro que deseas eliminar este profesor?');">
+                        <i class="bi bi-trash text-danger"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'editar_profesor' profesor.id %}" title="Editar" class="ms-2">
+                        <i class="bi bi-pencil text-warning"></i>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </table>

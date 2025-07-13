@@ -12,12 +12,24 @@
             <th>id</th>
                 <th>nombre</th>
                 <th>dni</th>
+                <th style="width: 50px;">Eliminar</th>
+                <th style="width: 50px;">Editar</th>
             </tr>
             {% for alumno in alumnos %}
             <tr>
                 <td>{{ alumno.id }}</td>
                 <td>{{ alumno.nombre }}</td>
                 <td>{{ alumno.dni }}</td>
+                <td class="text-center">
+                    <a href="{% url 'eliminar_alumno' alumno.id %}" title="Eliminar" onclick="return confirm('¿Seguro que deseas eliminar este alumno?');">
+                        <i class="bi bi-trash text-danger"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'editar_alumno' alumno.id %}" title="Editar" class="ms-2">
+                        <i class="bi bi-pencil text-warning"></i>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </table>

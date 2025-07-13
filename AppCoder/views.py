@@ -100,7 +100,25 @@ def buscar_alumno_resultado(request):
         return render(request, "resultado_busqueda_alumno.html", {"alumnos": alumnos})
     else:
         return HttpResponse("No se ha encontrado alumnos con ese nombre")
-    
+
+def eliminar_alumno(request, id):
+    alumno = Alumno.objects.get(id=id)
+    alumno.delete()
+    # Use messages framework to show success message
+    messages.success(request, f"Alumno {alumno.nombre} eliminado con éxito")
+    return redirect('alumnos')
+
+def editar_alumno(request, id):
+    alumno = Alumno.objects.get(id=id)
+    if request.method == "POST":
+        alumno.nombre = request.POST["nombre"]
+        alumno.dni = request.POST["dni"]
+        alumno.save()
+        # Use messages framework to show success message
+        messages.success(request, f"Alumno {alumno.nombre} editado con éxito")
+        return redirect('alumnos')
+    return render(request, "editar_alumno.html", {"alumno": alumno})
+
 # PROFESORES
 def profesores(request):
     profesores_list = Profesor.objects.all()
@@ -137,6 +155,24 @@ def buscar_profesor_resultado(request):
         return render(request, "resultado_busqueda_profesor.html", {"profesores": profesores})
     else:
         return HttpResponse("No se ha encontrado profesores con ese nombre")
+
+def eliminar_profesor(request, id):
+    profesor = Profesor.objects.get(id=id)
+    profesor.delete()
+    # Use messages framework to show success message
+    messages.success(request, f"Profesor {profesor.nombre} eliminado con éxito")
+    return redirect('profesores')
+
+def editar_profesor(request, id):
+    profesor = Profesor.objects.get(id=id)
+    if request.method == "POST":
+        profesor.nombre = request.POST["nombre"]
+        profesor.especialidad = request.POST["especialidad"]
+        profesor.save()
+        # Use messages framework to show success message
+        messages.success(request, f"Profesor {profesor.nombre} editado con éxito")
+        return redirect('profesores')
+    return render(request, "editar_profesor.html", {"profesor": profesor})
 
 # Contacto
 def contacto(request):
