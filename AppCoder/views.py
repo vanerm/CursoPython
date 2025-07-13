@@ -32,7 +32,9 @@ def curso_formulario(request):
            datos = mi_formulario.cleaned_data 
            curso = Curso(nombre=datos["nombre"], camada=datos["camada"])
            curso.save()
-           return render(request, "padre.html")           
+           # Use messages framework to show success message  
+           messages.success(request, f"Curso {curso.nombre} agregado con éxito")
+           return redirect('cursos')           
     else:
        mi_formulario = Curso_formulario()
     return render( request , "formulario.html", {"formulario": mi_formulario})
@@ -86,7 +88,9 @@ def alumno_formulario(request):
             datos = mi_formulario.cleaned_data
             alumno = Alumno(nombre=datos["nombre"], dni=datos["dni"])
             alumno.save()
-            return render(request, "padre.html")
+            # Use messages framework to show success message
+            messages.success(request, f"Alumno {alumno.nombre} agregado con éxito")
+            return redirect('alumnos')
     else:
         mi_formulario = Alumno_formulario()
     return render(request, "alumno_formulario.html", {"alumno_formulario": mi_formulario})
@@ -141,7 +145,9 @@ def profesor_formulario(request):
             datos = mi_formulario.cleaned_data
             profesor = Profesor(nombre=datos["nombre"], especialidad=datos["especialidad"])
             profesor.save()
-            return render(request, "padre.html")
+            # Use messages framework to show success message
+            messages.success(request, f"Profesor {profesor.nombre} agregado con éxito")
+            return redirect('profesores')
     else:
         mi_formulario = Profesor_formulario()
     return render(request, "profesor_formulario.html", {"profesor_formulario": mi_formulario})

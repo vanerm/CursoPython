@@ -2,7 +2,7 @@
 {% load static %}
 {% block contenido %}
 <ul>
-    <form method="POST" action="alta_curso", class="container">
+    <form method="POST" action="{% url 'curso_formulario' %}" class="container">
         {% csrf_token %}
         <h1>Agregar curso</h1> 
         <br>
