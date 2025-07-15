@@ -4,7 +4,6 @@
 
 {% block contenido %}
 
-<!-- Icons Grid-->
 <section class="features-icons bg-light text-center text-dark">
     <div class="container">
         <div class="bg-light text text-center text-dark align-items-center">
@@ -14,30 +13,47 @@
         </div>
         <br>
         <br>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <div class="features-icons-icon d-flex"><i class="bi bi-bar-chart-line m-auto text-primary"></i>
-                    </div>
-                    <h3>Data</h3>
-                    <p class="lead mb-0">Cursos, carreras y diplomaturas de Data Analytics, Scientist y Engineer</p>
+        <div class="container carousel-wrapper">
+            <button class="carousel-button left" onclick="scrollCarousel(-1)">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Curso 1 -->
+                <div class="carousel-card">
+                    <i class="bi bi-code-slash display-4 text-primary mb-3"></i>
+                    <h5>Programación</h5>
+                    <p>Aprendé desde cero a programar.</p>
+                </div>
+                <!-- Curso 2 -->
+                <div class="carousel-card">
+                    <i class="bi bi-palette display-4 text-success mb-3"></i>
+                    <h5>UX/UI</h5>
+                    <p>Diseño de experiencias digitales.</p>
+                </div>
+                <!-- Curso 3 -->
+                <div class="carousel-card">
+                    <i class="bi bi-bar-chart-line display-4 text-danger mb-3"></i>
+                    <h5>Data</h5>
+                    <p>Dominá el análisis de datos.</p>
+                </div>
+                <!-- Curso 4 -->
+                <div class="carousel-card">
+                    <i class="bi bi-database display-4 text-warning mb-3"></i>
+                    <h5>SQL</h5>
+                    <p>Consultas y bases de datos.</p>
+                </div>
+                <!-- Curso 5 -->
+                <div class="carousel-card">
+                    <i class="bi bi-vector-pen display-4 text-info mb-3"></i>
+                    <h5>Figma</h5>
+                    <p>Prototipado y diseño colaborativo.</p>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                    <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
-                    <h3>Programación</h3>
-                    <p class="lead mb-0">Cursos, carreras y diplomaturas para aprender a programar en Javascript,
-                        Python,Angular y desarrollarse en Backend, Frontend o Fullstack</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <div class="features-icons-icon d-flex"><i class="bi bi-palette m-auto text-primary"></i></div>
-                    <h3>Diseño UX/UI</h3>
-                    <p class="lead mb-0">Cursos, carreras y diplomaturas de Diseño UX/UI, Photoshop e Illustrator</p>
-                </div>
-            </div>
+
+            <button class="carousel-button right" onclick="scrollCarousel(1)">
+                <i class="bi bi-chevron-right"></i>
+            </button>
         </div>
     </div>
 </section>
@@ -188,6 +204,22 @@
     </div>
 </section>
 
+<!-- Carousel Call to Action Section -->
+<script>
+    const track = document.getElementById('carouselTrack');
+    let position = 0;
+    const cardWidth = 316; // Ancho de la card + gap (300 + 16px aprox)
 
+    function scrollCarousel(direction) {
+        const totalCards = track.children.length;
+        const maxScroll = (totalCards - 3) * cardWidth;
+
+        position += direction * cardWidth;
+        if (position < 0) position = 0;
+        if (position > maxScroll) position = maxScroll;
+
+        track.style.transform = `translateX(-${position}px)`;
+    }
+</script>
 
 {% endblock %}

@@ -10951,6 +10951,46 @@ header.masthead h1, header.masthead .h1 {
   color: #00cec9;
 }
 
+.carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      gap: 1rem;
+    }
+
+    .carousel-card {
+      min-width: 300px;
+      flex-shrink: 0;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 2rem;
+      z-index: 10;
+      color: #333;
+    }
+
+    .carousel-button.left {
+      left: 10px;
+    }
+
+    .carousel-button.right {
+      right: 10px;
+    }
 
 footer.footer {
   padding-top: 4rem;
