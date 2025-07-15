@@ -4,6 +4,7 @@
 
 {% block contenido %}
 
+<!-- Carousel de Cursos-->
 <section class="features-icons bg-light text-center text-dark">
     <div class="container">
         <div class="bg-light text text-center text-dark align-items-center">
@@ -19,38 +20,106 @@
             </button>
 
             <div class="carousel-track" id="carouselTrack">
-                <!-- Curso 1 -->
-                <div class="carousel-card">
-                    <i class="bi bi-code-slash display-4 text-primary mb-3"></i>
-                    <h5>Programación</h5>
-                    <p>Aprendé desde cero a programar.</p>
+                <!-- Programación y Desarrollo -->
+                <div class="carousel-card"><i class="bi bi-code-slash display-4 text-primary mb-3"></i>
+                    <h5>Desarrollo Web</h5>
+                    <p>Creá sitios desde cero.</p>
                 </div>
-                <!-- Curso 2 -->
-                <div class="carousel-card">
-                    <i class="bi bi-palette display-4 text-success mb-3"></i>
-                    <h5>UX/UI</h5>
-                    <p>Diseño de experiencias digitales.</p>
+                <div class="carousel-card"><i class="bi bi-file-code display-4 text-success mb-3"></i>
+                    <h5>JavaScript</h5>
+                    <p>Programación en la web.</p>
                 </div>
-                <!-- Curso 3 -->
-                <div class="carousel-card">
-                    <i class="bi bi-bar-chart-line display-4 text-danger mb-3"></i>
+                <div class="carousel-card"><i class="bi bi-lightning-charge display-4 text-warning mb-3"></i>
+                    <h5>React Js</h5>
+                    <p>Framework moderno.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-terminal-fill display-4 text-danger mb-3"></i>
+                    <h5>Backend I</h5>
+                    <p>Desarrollo avanzado.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-diagram-3 display-4 text-dark mb-3"></i>
+                    <h5>Backend II</h5>
+                    <p>Diseño y arquitectura.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-boxes display-4 text-secondary mb-3"></i>
+                    <h5>Backend III</h5>
+                    <p>Testing y escalabilidad.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-circle-square display-4 text-info mb-3"></i>
+                    <h5>Angular</h5>
+                    <p>Front-end avanzado.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-phone display-4 text-primary mb-3"></i>
+                    <h5>Aplicaciones</h5>
+                    <p>Mobile y multiplataforma.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-cpu display-4 text-danger mb-3"></i>
+                    <h5>Python</h5>
+                    <p>Código limpio y versátil.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-bug display-4 text-warning mb-3"></i>
+                    <h5>Testing QA</h5>
+                    <p>Control de calidad.</p>
+                </div>
+
+                <!-- Data -->
+                <div class="carousel-card"><i class="bi bi-bar-chart-line display-4 text-danger mb-3"></i>
                     <h5>Data</h5>
                     <p>Dominá el análisis de datos.</p>
                 </div>
-                <!-- Curso 4 -->
-                <div class="carousel-card">
-                    <i class="bi bi-database display-4 text-warning mb-3"></i>
+                <div class="carousel-card"><i class="bi bi-database display-4 text-warning mb-3"></i>
                     <h5>SQL</h5>
                     <p>Consultas y bases de datos.</p>
                 </div>
-                <!-- Curso 5 -->
-                <div class="carousel-card">
-                    <i class="bi bi-vector-pen display-4 text-info mb-3"></i>
+
+                <!-- Diseño UX/UI -->
+                <div class="carousel-card"><i class="bi bi-palette display-4 text-success mb-3"></i>
+                    <h5>Diseño UX/UI</h5>
+                    <p>Experiencias digitales.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-vector-pen display-4 text-info mb-3"></i>
                     <h5>Figma</h5>
-                    <p>Prototipado y diseño colaborativo.</p>
+                    <p>Prototipado colaborativo.</p>
+                </div>
+
+                <!-- Inteligencia Artificial -->
+                <div class="carousel-card"><i class="bi bi-robot display-4 text-primary mb-3"></i>
+                    <h5>Inteligencia Artificial</h5>
+                    <p>Automatizá con IA.</p>
+                </div>
+
+                <!-- Marketing Digital -->
+                <div class="carousel-card"><i class="bi bi-megaphone display-4 text-danger mb-3"></i>
+                    <h5>Marketing</h5>
+                    <p>Promocioná como un pro.</p>
+                </div>
+
+                <!-- Negocios -->
+                <div class="carousel-card"><i class="bi bi-sliders display-4 text-dark mb-3"></i>
+                    <h5>Negocios</h5>
+                    <p>Estrategias y decisiones.</p>
+                </div>
+
+                <!-- Producto -->
+                <div class="carousel-card"><i class="bi bi-bag-check display-4 text-success mb-3"></i>
+                    <h5>Producto</h5>
+                    <p>Del diseño al lanzamiento.</p>
+                </div>
+
+                <!-- Duplicados para loop -->
+                <div class="carousel-card"><i class="bi bi-code-slash display-4 text-primary mb-3"></i>
+                    <h5>Desarrollo Web</h5>
+                    <p>Creá sitios desde cero.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-file-code display-4 text-success mb-3"></i>
+                    <h5>JavaScript</h5>
+                    <p>Programación en la web.</p>
+                </div>
+                <div class="carousel-card"><i class="bi bi-lightning-charge display-4 text-warning mb-3"></i>
+                    <h5>React Js</h5>
+                    <p>Framework moderno.</p>
                 </div>
             </div>
-
             <button class="carousel-button right" onclick="scrollCarousel(1)">
                 <i class="bi bi-chevron-right"></i>
             </button>
@@ -207,19 +276,30 @@
 <!-- Carousel Call to Action Section -->
 <script>
     const track = document.getElementById('carouselTrack');
+    const cards = track.children;
+    const cardWidth = 316;
     let position = 0;
-    const cardWidth = 316; // Ancho de la card + gap (300 + 16px aprox)
+    const visibleCards = 3;
+    const totalOriginalCards = cards.length - visibleCards; // sin contar duplicados
 
-    function scrollCarousel(direction) {
-        const totalCards = track.children.length;
-        const maxScroll = (totalCards - 3) * cardWidth;
-
+    function scrollCarousel(direction = 1) {
         position += direction * cardWidth;
-        if (position < 0) position = 0;
-        if (position > maxScroll) position = maxScroll;
 
+        track.style.transition = "transform 0.5s ease";
         track.style.transform = `translateX(-${position}px)`;
+
+        // Si llegamos al final (últimos duplicados)
+        if (position >= totalOriginalCards * cardWidth) {
+            setTimeout(() => {
+                track.style.transition = "none"; // quitamos transición para que no se note el salto
+                position = 0;
+                track.style.transform = `translateX(0px)`;
+            }, 510); // esperamos a que termine la animación
+        }
     }
+
+    const autoplay = setInterval(scrollCarousel, 3000);
 </script>
+
 
 {% endblock %}
