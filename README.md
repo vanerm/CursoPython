@@ -43,7 +43,6 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
 - **Diseño Responsivo**
   - Interfaz moderna y adaptable usando Bootstrap
   - Tema oscuro con contraste accesible
-  - Footer con enlaces a redes sociales
 
 - **Botón flotante de WhatsApp**
   - Acceso rápido a WhatsApp para consultas
