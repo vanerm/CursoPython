@@ -220,7 +220,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Usuario creado exitosamente")
-            return HttpResponse("Usuario creado exitosamente")
+            return redirect('login')
     else:
         form = UserCreationForm()   
     return render(request, "signup.html", {"form":form})
