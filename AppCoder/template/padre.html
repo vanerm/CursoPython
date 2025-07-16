@@ -52,8 +52,17 @@
                 <a class="btn btn-primary" href="{% url 'profesores' %}">Profesores</a>
                 <a class="btn btn-primary" href="{% url 'alumnos' %}">Alumnos</a>
                 <a class="btn btn-primary" href="{% url 'cursos' %}">Cursos</a>
-                <a class="btn" style="background-color: rgb(233, 144, 255); color: rgb(105, 27, 123); border: none;" href="#login">Login</a>
-                <a class="btn disabled" style="background-color: rgb(233, 144, 255); color: rgb(105, 27, 123); border: none;" href="#signup">Signup</a>
+                {% if user.is_authenticated %}
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="btn" style="background-color: rgb(233, 144, 255); color: rgb(105, 27, 123); border: none;" href="{% url 'login' %}">Login</a>
+                    <a class="btn" style="background-color: rgb(233, 144, 255); color: rgb(105, 27, 123); border: none;" href="{% url 'signup' %}">Signup</a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <span class="text-white">Bienvenido, {{ user.username }}</span>
+                {% else %}
+                    <span class="text-white">Bienvenido, invitado</span>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->

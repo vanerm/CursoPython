@@ -5,6 +5,8 @@ from django.template import loader
 from AppCoder.forms import Curso_formulario, Alumno_formulario, Profesor_formulario 
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def inicio(request):
@@ -183,3 +185,42 @@ def editar_profesor(request, id):
 # Contacto
 def contacto(request):
     return render(request, "contacto.html")
+
+# Login
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, f"Bienvenido {username}")
+                return render(request, "inicio.html", {"mensaje":f"Bienvenido {username}"})
+            else:
+                messages.error(request, "Usuario o contraseña incorrectos")
+                return render(request, "error.html", {"mensaje":f"Usuario no encontrado: {username}"})
+        else:
+            messages.error(request, "Formulario inválido")
+    else:
+        form = AuthenticationForm()
+    return render(request, "login.html", {"form": form})
+
+# Logout
+def logout_request(request):
+    logout(request)
+    messages.success(request, "Has cerrado sesión exitosamente")
+    return render(request, "logout.html")
+
+#Signup
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Usuario creado exitosamente")
+            return HttpResponse("Usuario creado exitosamente")
+    else:
+        form = UserCreationForm()   
+    return render(request, "signup.html", {"form":form})
