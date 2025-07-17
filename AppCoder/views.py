@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import Curso, Alumno, Profesor
 from django.template import loader
-from AppCoder.forms import Curso_formulario, Alumno_formulario, Profesor_formulario 
+from AppCoder.forms import Curso_formulario, Alumno_formulario, Profesor_formulario, UserEditForm 
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -224,3 +224,24 @@ def signup(request):
     else:
         form = UserCreationForm()   
     return render(request, "signup.html", {"form":form})
+
+# Editar perfil
+
+def editar_perfil(request):
+    usuario = request.user
+    if request.method == "POST":
+        mi_formulario = UserEditForm(request.POST)
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            usuario.email = informacion["email"]
+            password = informacion["password1"]
+            usuario.set_password(password)
+            usuario.save()
+            messages.success(request, "Perfil actualizado exitosamente")
+            return redirect('inicio')
+            
+    else:
+        mi_formulario = UserEditForm(initial={
+            "email": usuario.email
+        })
+    return render(request, "editar_perfil.html", {"miFormulario": mi_formulario, "usuario": usuario})
