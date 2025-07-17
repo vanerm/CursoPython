@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def inicio(request):
@@ -51,6 +52,7 @@ def buscar(request):
     else:
         return HttpResponse("No se ha encontrado cursos con ese nombre")
     
+@login_required    
 def eliminar_curso(request, id):
     curso = Curso.objects.get(id=id)
     curso.delete()
@@ -58,6 +60,7 @@ def eliminar_curso(request, id):
     messages.success(request, f"Curso {curso.nombre} eliminado con éxito")
     return redirect('cursos')
 
+@login_required
 def editar_curso(request, id):
     curso = Curso.objects.get(id=id)
     if request.method == "POST":
@@ -107,6 +110,7 @@ def buscar_alumno_resultado(request):
     else:
         return HttpResponse("No se ha encontrado alumnos con ese nombre")
 
+@login_required 
 def eliminar_alumno(request, id):
     alumno = Alumno.objects.get(id=id)
     alumno.delete()
@@ -114,6 +118,7 @@ def eliminar_alumno(request, id):
     messages.success(request, f"Alumno {alumno.nombre} eliminado con éxito")
     return redirect('alumnos')
 
+@login_required 
 def editar_alumno(request, id):
     alumno = Alumno.objects.get(id=id)
     if request.method == "POST":
@@ -164,6 +169,7 @@ def buscar_profesor_resultado(request):
     else:
         return HttpResponse("No se ha encontrado profesores con ese nombre")
 
+@login_required 
 def eliminar_profesor(request, id):
     profesor = Profesor.objects.get(id=id)
     profesor.delete()
@@ -171,6 +177,7 @@ def eliminar_profesor(request, id):
     messages.success(request, f"Profesor {profesor.nombre} eliminado con éxito")
     return redirect('profesores')
 
+@login_required 
 def editar_profesor(request, id):
     profesor = Profesor.objects.get(id=id)
     if request.method == "POST":
@@ -227,6 +234,7 @@ def signup(request):
 
 # Editar perfil
 
+@login_required
 def editar_perfil(request):
     usuario = request.user
     if request.method == "POST":
