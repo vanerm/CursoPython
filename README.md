@@ -10,6 +10,12 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
 - **Pagina de Inicio**
   - Información general sobre la aplicación
 
+- **Login, Logout & Registro de Usuarios**
+  - Iniciar sesión
+  - Cerrar sesión
+  - Registro de usuarios
+  - Editar perfil de usuarios
+
 - **Gestión de Cursos**
   - Listar todos los cursos
   - Agregar nuevos cursos
