@@ -2,19 +2,34 @@
 {% load static %}
 {% block contenido %}
 <ul>
-    <form method="POST" action="alta_alumno", class="container">
+    <form method="POST" action="alta_alumno" , class="container">
         {% csrf_token %}
-        <h1>Agregar alumno</h1> 
-        <br>
-        <p>Nombre del alumno:</p>
-        <input type="text" name="nombre" required>
-        <br>
-        <br>
-        <p>dni:</p>
-        <input type="text" name="dni" required>
-        <br>
-        <br>
-        <input type="submit" value="Agregar alumno" class="btn btn-primary">
+        <br><br>
+        <h1 class="text-center text-white">Agregar alumno</h1>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card border-white shadow-lg rounded-4"
+                        style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(6px);">
+                        <div class="card-body text-center text-white">
+                            <br>
+                            <p>Nombre del alumno:</p>
+                            <input type="text" name="nombre" required>
+                            <br>
+                            <br>
+                            <p>DNI:</p>
+                            <input type="text" name="dni" required>
+                            <br>
+                            <br>
+                            <input type="submit" value="Agregar alumno" class="btn btn-outline-light px-4">
+                            <br><br>
+                            <a href="{% url 'alumnos' %}" class="btn btn-outline-light px-4">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
+    <br><br>
 </ul>
 {% endblock %}

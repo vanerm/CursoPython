@@ -4,19 +4,33 @@
 <ul>
     <form method="POST" action="{% url 'curso_formulario' %}" class="container">
         {% csrf_token %}
-        <h1>Agregar curso</h1> 
-        <br>
-        <p>Nombre del curso:</p>
-        <input type="text" name="nombre" required>
-        <br>
-        <br>
-        <p>Camada:</p>
-        <input type="text" name="camada" required>
-        <br>
-        <br>
-        <input type="submit" value="Agregar curso" class="btn btn-primary">
-        <br>
-        <br>
+        <br><br>
+        <h1 class="text-center text-white">Agregar curso</h1>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card border-white shadow-lg rounded-4"
+                        style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(6px);">
+                        <div class="card-body text-center text-white">
+                            <br>
+                            <p>Nombre del curso:</p>
+                            <input type="text" name="nombre" required>
+                            <br>
+                            <br>
+                            <p>Camada:</p>
+                            <input type="text" name="camada" required>
+                            <br>
+                            <br>
+                            <input type="submit" value="Agregar curso" class="btn btn-outline-light px-4">
+                            <br>
+                            <br>
+                            <a href="{% url 'inicio' %}" class="btn btn-outline-light px-4  ">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
+    <br><br>
 </ul>
 {% endblock %}
