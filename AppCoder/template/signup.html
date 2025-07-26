@@ -3,16 +3,28 @@
 {% block contenido %}
 
 <ul>
-    <h1>Nuevo Usuario</h1>
     <br>
     <br>
-    <form action="" method="POST" class="container">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <button type="submit">Registrate</button>
-        <br>
-        <br>
-    </form>
+    <h1 class="text-center text-white">Nuevo Usuario</h1>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card border-white shadow-lg rounded-4"
+                    style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(6px);">
+                    <div class="card-body text-left text-white">
+                        <form action="" method="POST" class="container">
+                            <br><br>
+                            {% csrf_token %}
+                            {{ form.as_p}}
+                            <button type="submit" class="btn btn-outline-light px-4">Registrate</button>
+                            <br><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
 </ul>
 {% endblock %}
-
