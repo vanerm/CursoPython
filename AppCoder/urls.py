@@ -37,6 +37,8 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     # CONTACTO
     path('contacto/', views.contacto, name='contacto'),
+    # PERFIL
+    path('perfil/', views.perfil, name='perfil'),
     # EDITAR PERFIL
     path('editar_perfil/', views.editar_perfil, name='editar_perfil')
     ]

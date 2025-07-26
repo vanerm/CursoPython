@@ -1,0 +1,32 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+<br><br>
+
+<h1 class="text-center text-white">Perfil de usuario</h1>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card border-white shadow-lg rounded-4" style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(6px);">
+                <div class="card-body text-center text-white">
+                    <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=random&color=fff"
+                         class="rounded-circle mb-3" width="100" height="100" alt="Avatar">
+                    
+                    <h3 class="mt-3 mb-1">{{ user.username }}</h3>
+                    <small class="text-muted d-block mb-3">Usuario registrado</small>
+                    
+                    <p class="mb-4">Último ingreso: {{ user.last_login|date:"d/m/Y H:i" }}</p>
+                    
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{% url 'editar_perfil' %}" class="btn btn-outline-light px-4">Editar perfil</a>
+                        <a href="{% url 'logout' %}" class="btn btn-outline-light px-4">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+{% endblock %}

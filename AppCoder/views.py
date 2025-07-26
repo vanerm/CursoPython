@@ -232,6 +232,12 @@ def signup(request):
         form = UserCreationForm()   
     return render(request, "signup.html", {"form":form})
 
+# PERFIL
+@login_required
+def perfil(request):
+    usuario = request.user
+    return render(request, "perfil.html", {"usuario": usuario})
+
 # Editar perfil
 
 @login_required

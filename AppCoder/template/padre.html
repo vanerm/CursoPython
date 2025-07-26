@@ -60,32 +60,43 @@
     <!-- Navigation-->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(28, 31, 48)">
         <div class="container d-flex justify-content-between align-items-center">
-            <!-- Logo a la izquierda -->
+            <!-- Left side of navbar -- Logo AppCoder -->
             <a class="navbar-brand text-white fw-bold" style="letter-spacing:1px; font-size:2rem;"
                 href="{% url 'inicio' %}">AppCoder</a>
 
-            <!-- Botones a la derecha -->
+            <!-- Right side of navbar -- Buttons -->
             <div class="d-flex align-items-center gap-2 ms-auto">
                 {% if user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url 'profesores' %}">Profesores</a>
                 <a class="btn btn-primary" href="{% url 'alumnos' %}">Alumnos</a>
                 <a class="btn btn-primary" href="{% url 'cursos' %}">Cursos</a>
-                <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+
+                <!-- Dropdown wihth user avatar -->
+                <div class="dropdown ms-3">
+                    <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#"
+                        role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=random&color=fff"
+                            alt="Avatar" width="32" height="32" class="rounded-circle me-2">
+                        <span>{{ user.username }}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{% url 'perfil' %}">Mi Perfil</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                    </ul>
+                </div>
                 {% else %}
                 <a class="btn" style="background-color: rgb(233, 144, 255); color: rgb(105, 27, 123); border: none;"
                     href="{% url 'login' %}">Login</a>
                 <a class="btn" style="background-color: rgb(233, 144, 255); color: rgb(105, 27, 123); border: none;"
                     href="{% url 'signup' %}">Signup</a>
                 {% endif %}
-
-                {% if user.is_authenticated %}
-                <span class="text-white ms-3">Bienvenido, {{ user.username }}</span>
-                {% else %}
-                <span class="text-white ms-3">Bienvenido, invitado</span>
-                {% endif %}
             </div>
         </div>
     </nav>
+
 
     <!-- Masthead-->
     <header class="masthead">
@@ -111,7 +122,8 @@
                                         placeholder="Email Address" data-sb-validations="required,email" />
                                     <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">
                                         Dirección de email requerida.</div>
-                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">La dirección de email no es valida.</div>
+                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">La
+                                        dirección de email no es valida.</div>
                                 </div>
                                 <div class="col-auto">
                                     <button class="btn btn-primary btn-lg disabled" id="submitButton"
@@ -125,9 +137,10 @@
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3">
                                     <div class="fw-bolder">¡Inscripción exitosa!</div>
-                                    <p>Para mas informacion sobre CoderCamp IA, por favor visite la página de la academia en la siguiente URL:</p>
-                                    <a class="text-white"
-                                        href="https://www.coderhouse.com/ar/codercamp/ia#agenda" target="_blank">https://www.coderhouse.com/ar/codercamp/ia#agenda</a>
+                                    <p>Para mas informacion sobre CoderCamp IA, por favor visite la página de la
+                                        academia en la siguiente URL:</p>
+                                    <a class="text-white" href="https://www.coderhouse.com/ar/codercamp/ia#agenda"
+                                        target="_blank">https://www.coderhouse.com/ar/codercamp/ia#agenda</a>
                                 </div>
                             </div>
                             <!-- Submit error message-->
