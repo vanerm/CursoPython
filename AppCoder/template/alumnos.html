@@ -9,15 +9,13 @@
 <main class="container text-white">
     <table class="table text-white">
         <tr>
-            <th>id</th>
-                <th>nombre</th>
-                <th>dni</th>
+                <th>Nombre</th>
+                <th>DNI</th>
                 <th style="width: 50px;">Eliminar</th>
                 <th style="width: 50px;">Editar</th>
             </tr>
             {% for alumno in alumnos %}
             <tr>
-                <td>{{ alumno.id }}</td>
                 <td>{{ alumno.nombre }}</td>
                 <td>{{ alumno.dni }}</td>
                 <td class="text-center">

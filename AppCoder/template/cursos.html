@@ -10,15 +10,13 @@
     <main class="container text-white">
         <table class="table text-white">
             <tr>
-                <th>id</th>
-                <th>nombre</th>
-                <th>camada</th>
+                <th>Nombre</th>
+                <th>Camada</th>
                 <th style="width: 50px;">Eliminar</th>
                 <th style="width: 50px;">Editar</th>
             </tr>
             {% for curso in cursos %}
             <tr>
-                <td>{{ curso.id }}</td>
                 <td>{{ curso.nombre }}</td>
                 <td>{{ curso.camada }}</td>
                 <td class="text-center">

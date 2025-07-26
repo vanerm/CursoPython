@@ -9,15 +9,13 @@
 <main class="container text-white">
     <table class="table text-white">
         <tr>
-            <th>id</th>
-                <th>nombre</th>
-                <th>especialidad</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
                 <th style="width: 50px;">Eliminar</th>
                 <th style="width: 50px;">Editar</th>
             </tr>
             {% for profesor in profesores %}
             <tr>
-                <td>{{ profesor.id }}</td>
                 <td>{{ profesor.nombre }}</td>
                 <td>{{ profesor.especialidad }}</td>
                 <td class="text-center">
