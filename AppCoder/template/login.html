@@ -2,14 +2,29 @@
 {% load static %}
 {% block contenido %}
 <ul>
-    <h1>Login</h1> 
     <br>
-    <form method="POST" action="" class="container">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Ingresar</button>
-        <br>
-        <br>
-    </form>
+    <br>
+    <h1 class="text-center text-white">Login</h1>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card border-white shadow-lg rounded-4"
+                    style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(6px);">
+                    <div class="card-body text-center text-white">
+                        <form method="POST" action="" class="container">
+                            <br><br>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-outline-light px-4">Ingresar</button>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
 </ul>
 {% endblock %}
