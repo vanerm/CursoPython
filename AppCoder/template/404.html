@@ -1,0 +1,25 @@
+{% extends "padre.html" %}
+{% block contenido %}
+<div class="container text-center my-5">
+    <h1 class="display-4">404</h1>
+    <h2>¡Oops! Página no encontrada</h2>
+    <lottie-player
+        src="https://assets7.lottiefiles.com/packages/lf20_ydo1amjm.json" 
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px; margin: auto;"
+        loop
+        autoplay>
+    </lottie-player>
+    <p class="lead">Parece que te perdiste en el espacio. ¡Volvamos a casa!</p>
+    <a href="{% url 'inicio' %}" class="btn btn-outline-light px-4">Volver al inicio</a>
+</div>
+
+{% if request.user.is_authenticated %}
+    <div class="text-center">
+        <p>¿Necesitas ayuda? Contacta a nuestro soporte.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-outline-light px-4">Contacto</a>
+    </div>
+{% endif %}
+<br>
+{% endblock %}
