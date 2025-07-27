@@ -2,21 +2,37 @@
 {% load static %}
 {% block contenido %}
 <ul>
+    <br><br>
     <form method="POST" action="{% url 'editar_alumno' alumno.id %}" class="container">
         {% csrf_token %}
-        <h1>Editar alumno</h1> 
-        <br>
-        <p>Nombre del alumno:</p>
-        <input type="text" name="nombre" value="{{ alumno.nombre }}" required>
-        <br>
-        <br>
-        <p>Dni:</p>
-        <input type="text" name="dni" value="{{ alumno.dni }}" required>
-        <br>
-        <br>
-        <input type="submit" value="Guardar cambios" class="btn btn-primary">
-        <br>
-        <br>
+        <h1 class="text-center text-white">Editar alumno</h1>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card border-white shadow-lg rounded-4"
+                        style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(6px);">
+                        <div class="card-body text-center text-white">
+                            <form method="POST" action="" class="container">
+                                <br>
+                                <p>Nombre del alumno:</p>
+                                <input type="text" name="nombre" value="{{ alumno.nombre }}" required>
+                                <br>
+                                <br>
+                                <p>DNI:</p>
+                                <input type="text" name="dni" value="{{ alumno.dni }}" required>
+                                <br>
+                                <br>
+                                <input type="submit" value="Guardar cambios" class="btn btn-outline-light px-4 me-2">
+                                <a href="{% url 'alumnos' %}" class="btn btn-outline-light px-4">Volver</a>
+                                <br>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
+    <br><br>
 </ul>
 {% endblock %}
