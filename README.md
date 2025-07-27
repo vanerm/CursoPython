@@ -13,7 +13,7 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
   - Si el usuario no está autenticado, se muestra la página de inicio general
   - Si el usuario está autenticado, se muestra la página de inicio personalizada con su nombre y avatar con las iniciales del mismo y acceso al resto de la aplicación (cursos,profesores y alumnos)
 
-  - **Perfil de Usuario**
+- **Perfil de Usuario**
   - Si el usuario está autenticado, puede editar su email y cerrar sesión desde su perfil personalizado.
   - Avatar con las iniciales de su nombre generado con la API de [UI Avatars](https://ui-avatars.com/)
   - Permisos de administración para listar, buscar, editar y eliminar cursos, alumnos y profesores. 
