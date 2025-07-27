@@ -8,10 +8,16 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
 ## Funcionalidades
 
 - **Pagina de Inicio**
-  - Información general sobre la aplicación
-  - Formulario de suscripcion de [Start Bootstrap](https://startbootstrap.com)
+  - Formulario de suscripción de [Start Bootstrap](https://startbootstrap.com)
   - Si el usuario no está autenticado, se muestra la página de inicio general
   - Si el usuario está autenticado, se muestra la página de inicio personalizada con su nombre y avatar con las iniciales del mismo y acceso al resto de la aplicación (cursos,profesores y alumnos)
+  - Carrousel de cursos
+  - Sección de Información General sobre la aplicación
+  - Sección de Testimonios
+  - Sección de Partners
+
+- **Navigation Bar**
+  - Barra de navegación con enlaces a la home, secciones principales y perfil de usuario dependiendo si el usuario está autenticado o no  
 
 - **Perfil de Usuario**
   - Si el usuario está autenticado, puede editar su email y cerrar sesión desde su perfil personalizado.
@@ -45,14 +51,11 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
   - Editar profesores existentes
   - Eliminar profesores existentes
 
-- **Formulario de Contacto**
-  - Los usuarios pueden enviar consultas a través de un formulario
-
-- **Navigation Bar**
-  - Barra de navegación con enlaces a la home, secciones principales y perfil de usuario dependiendo si el usuario está autenticado o no
-
 - **Footer**
   - Información de contacto y redes sociales
+
+- **Formulario de Contacto**
+  - Los usuarios pueden enviar consultas a través de un formulario
 
 - **Diseño Responsivo**
   - Interfaz moderna y adaptable usando Bootstrap
