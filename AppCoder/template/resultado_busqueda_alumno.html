@@ -2,31 +2,57 @@
 {% load static %}
 {% block contenido %}
 
-    {% if alumnos%}
-        <ul>
-            <h1 class="text-center">Resultados de la búsqueda</h1>
-            <p class="text-center">Se encontraron {{alumnos|length}} alumnos</p>
-            <br>
-            <main class="container text-white">
-            <table class="table text-white">
-                <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>dni</th>
-                </tr>
+{% if alumnos%}
+<div class="container my-5 text-white">
+    <h1 class="text-center mb-3">Resultados de la búsqueda</h1>
+    <p class="text-center mb-4">Se encontraron {{alumnos|length}} alumnos</p>
+    <br>
+    <table class="table table-dark table-striped table-hover rounded shadow">
+        <thead class="table-light text-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th class="text-center">Eliminar</th>
+                <th class="text-center">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for alumno in alumnos %}
-                <tr>
-                    <td>{{ alumno.id }}</td>
-                    <td>{{ alumno.nombre }}</td>
-                    <td>{{ alumno.dni }}</td>
-                </tr>
+            <tr>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.dni }}</td>
+                <td class="text-center">
+                    <a href="{% url 'eliminar_alumno' alumno.id %}" class="btn btn-sm btn-outline-danger"
+                        title="Eliminar" onclick="return confirm('¿Seguro que deseas eliminar este alumno?');">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'editar_alumno' alumno.id %}" class="btn btn-sm btn-outline-warning" title="Editar">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </td>
+            </tr>
             {% endfor %}
-            </table>
-            <a href ="{% url 'alumno_formulario' %}" class="btn btn-primary me-2">Nuevo Alumno</a>
-            <a href ="{% url 'buscar_alumno' %}" class="btn btn-primary">Buscar Alumno</a>
-            </main>
-        </ul>
+        </tbody>
+    </table>
+    <div class="mt-4 d-flex gap-3">
+        <a href="{% url 'alumno_formulario' %}" class="btn btn-primary text-white">
+            <i class="bi bi-person-plus"></i> Nuevo Alumno
+        </a>
+        <a href="{% url 'buscar_alumno' %}" class="btn btn-outline-primary text-white">
+            <i class="bi bi-search"></i> Buscar Alumno
+        </a>
+        <br><br>
+    </div>
     {% else %}
-        <p>No se encontraron alumnos</p>
+    <br><br>
+    <h1 class="text-center mb-3">No se encontraron alumnos</h1>
+    <div class="container my-5 text-white text-center">
+        <a href="{% url 'alumnos' %}" class="btn btn-outline-primary text-white mb-3">
+            <i class="bi bi-search"></i> Volver a Buscar Alumnos
+        </a>
+    </div>
     {% endif %}
+</div>
 {% endblock %}

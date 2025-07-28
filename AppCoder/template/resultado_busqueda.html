@@ -2,31 +2,57 @@
 {% load static %}
 {% block contenido %}
 
-    {% if cursos%}
-        <ul>
-            <h1 class="text-center">Resultados de la búsqueda</h1>
-            <p class="text-center">Se encontraron {{cursos|length}} cursos</p>
-            <br>
-            <main class="container text-white">
-            <table class="table text-white">
-                <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>camada</th>
-                </tr>
+{% if cursos%}
+<div class="container my-5 text-white">
+
+    <h1 class="text-center mb-3">Resultados de la búsqueda</h1>
+    <p class="text-center mb-4">Se encontraron {{cursos|length}} cursos</p>
+
+    <table class="table table-dark table-striped table-hover rounded shadow">
+        <thead class="table-light text-dark">
+            <tr>
+                <th>nombre</th>
+                <th>camada</th>
+                <th class="text-center">Eliminar</th>
+                <th class="text-center">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for curso in cursos%}
-                <tr>
-                    <td>{{ curso.id }}</td>
-                    <td>{{ curso.nombre }}</td>
-                    <td>{{ curso.camada }}</td>
-                </tr>
+            <tr>
+                <td>{{ curso.nombre }}</td>
+                <td>{{ curso.camada }}</td>
+                <td class="text-center">
+                    <a href="{% url 'eliminar_profesor' profesor.id %}" class="btn btn-sm btn-outline-danger"
+                        title="Eliminar" onclick="return confirm('¿Seguro que deseas eliminar este profesor?');">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'editar_profesor' profesor.id %}" class="btn btn-sm btn-outline-warning"
+                        title="Editar">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </td>
+            </tr>
             {% endfor %}
-            </table>
-            <a href ="{% url 'curso_formulario' %}" class="btn btn-primary me-2">Nuevo Curso</a>
-            <a href ="{% url 'buscar_curso' %}" class="btn btn-primary">Buscar Curso</a>
-            </main>
-        </ul>
+    </table>
+    <div class="mt-4 d-flex gap-3">
+        <a href="{% url 'curso_formulario' %}" class="btn btn-primary text-white">
+            <i class="bi bi-person-plus"></i> Nuevo Curso
+        </a>
+        <a href="{% url 'buscar_curso' %}" class="btn btn-outline-primary text-white">
+            <i class="bi bi-search"></i> Buscar Curso
+        </a>
+    </div>
     {% else %}
-        <p>No se encontraron cursos</p>
+    <br><br>
+    <h1 class="text-center mb-3">No se encontraron cursos</h1>
+    <div class="container my-5 text-white text-center">
+        <a href="{% url 'cursos' %}" class="btn btn-outline-primary text-white mb-3">
+            <i class="bi bi-search"></i> Volver a Buscar Cursos
+        </a>
+    </div>
     {% endif %}
+</div>
 {% endblock %}
