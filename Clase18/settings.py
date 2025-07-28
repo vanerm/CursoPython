@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -122,5 +123,22 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
-DEBUG = False  # Cambiar a False en producción
+DEBUG = False  # Cambiar a True si da errores en desarrollo
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # o el dominio real
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'AppCoder', 'static', 'AppCoder')]  # solo para desarrollo
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # solo para producción
+
+# Para que Django sepa dónde buscar los archivos estáticos en desarrollo, debes configurar STATICFILES_DIRS en tu archivo settings.py. 
+# Esto hará que Django busque los archivos estáticos en la carpeta static/ de tu aplicación
+# en lugar de en staticfiles/. Luego, puedes usar STATIC_URL para especificar la URL de tu carpeta estática en desarrollo.
+# En producción, debes usar STATIC_ROOT para especificar dónde se recopilarán los archivos estáticos.
+# STATIC_ROOT es la ubicación donde se recopilarán todos los archivos estáticos cuando ejecutes el comando `collectstatic`.
+# En desarrollo, puedes usar STATICFILES_DIRS para especificar
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # solo para producción
+# Para que Django sepa dónde buscar los archivos estáticos en producción, debes configurar STATICFILES_DIRS en tu archivo settings.py. 
+# Esto hará que Django busque los archivos estáticos en la carpeta static/ de tu proyecto en lugar de en staticfiles/. 
+# Luego, puedes usar STATIC_URL para especificar la URL de tu carpeta estática en producción.
+# ejecutar python manage.py collectstatic cada vez que realices cambios en tus archivos estáticos.
+# Eso copiará todos los archivos de static/ a staticfiles/, desde donde Django espera que se sirvan cuando DEBUG = False
