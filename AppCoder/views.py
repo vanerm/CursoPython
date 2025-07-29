@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 # Create your views here.
 def inicio(request):
@@ -259,3 +260,7 @@ def editar_perfil(request):
             "email": usuario.email
         })
     return render(request, "editar_perfil.html", {"miFormulario": mi_formulario, "usuario": usuario})
+
+# Page 404 Not Found
+def error_personalizado(request):
+    raise Http404("Esto es una página no encontrada forzada")

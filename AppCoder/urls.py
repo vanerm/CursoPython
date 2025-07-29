@@ -47,5 +47,7 @@ urlpatterns = [
     # PERFIL
     path('perfil/', views.perfil, name='perfil'),
     # EDITAR PERFIL
-    path('editar_perfil/', views.editar_perfil, name='editar_perfil')
+    path('editar_perfil/', views.editar_perfil, name='editar_perfil'),
+    # Page 404 Not Found
+    path('test404/', views.error_personalizado, name='test404')
     ]

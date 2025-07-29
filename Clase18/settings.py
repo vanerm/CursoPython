@@ -123,7 +123,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
-DEBUG = True  # Cambiar a True si da errores en desarrollo
+# Cambiar a False en producción para ver la pagina de error 404 personalizada sin recargar la página
+DEBUG = True  # Si está en False cambiar a True si da errores en producción 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # o el dominio real
 
 STATIC_URL = '/static/'
