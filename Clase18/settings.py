@@ -123,7 +123,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
-DEBUG = False  # Cambiar a True si da errores en desarrollo
+DEBUG = True  # Cambiar a True si da errores en desarrollo
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # o el dominio real
 
 STATIC_URL = '/static/'

@@ -1,0 +1,10 @@
+# Ignorar la carpeta de archivos estáticos recolectados
+/staticfiles/
+
+# Ignorar archivos temporales
+*.pyc
+__pycache__/
+db.sqlite3
+
+# Ignorar archivos de entorno
+.env

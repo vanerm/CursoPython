@@ -75,6 +75,16 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
   - Animación de [Lottie](https://app.lottiefiles.com/)
   - Botones para regresar al inicio o contactar al administrador a través del formulario de contacto
 
+## 🛠️ Recolección de archivos estáticos en producción
+
+Este proyecto usa archivos estáticos (CSS, JS, imágenes) ubicados en `AppCoder/static/AppCoder/`.
+
+Para servir estos archivos correctamente en modo producción (`DEBUG = False`), primero ejecutá:
+
+```bash
+python manage.py collectstatic
+
+
 ## Créditos
 
 Este proyecto fue desarrollado como parte de la materia de Python de la Diplomatura de Data Science en [Coder House](https://www.coderhouse.com/)
