@@ -83,7 +83,7 @@ Para servir estos archivos correctamente en modo producción (`DEBUG = False`), 
 
 ```bash
 python manage.py collectstatic
-
+```
 
 ## Créditos
 
