@@ -123,23 +123,29 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
-# Cambiar a False en producción para ver la pagina de error 404 personalizada sin recargar la página
+
+# -------------------------------------------------------------------
+# IMPORTANTE SOBRE DEBUG Y ARCHIVOS ESTÁTICOS
+# -------------------------------------------------------------------
+# Cuando DEBUG = True:
+#   - Django sirve los archivos estáticos automáticamente (CSS, JS, imágenes).
+#   - Útil para desarrollo local.
+#
+# Cuando DEBUG = False:
+#   - Django NO sirve archivos estáticos por sí mismo.
+#   - Es necesario ejecutar 'python manage.py collectstatic' para recopilar los archivos en STATIC_ROOT.
+#   - En producción real, se debe usar un servidor web (Nginx, Apache, etc.) para servir los archivos estáticos.
+#   - El bloque en urls.py que agrega static() es solo para pruebas locales rápidas, NO para producción real.
+#   - El servidor de desarrollo de Django puede fallar al servir archivos estáticos con recargas forzadas.
+#
+# Recomendación:
+#   - Dejar DEBUG = True durante el desarrollo.
+#   - Solo poner DEBUG = False para probar páginas de error personalizadas (como 404.html).
+#   - Si el CSS falla al recargar con DEBUG = False usando runserver, es normal.
+# -------------------------------------------------------------------
 DEBUG = True  # Si está en False cambiar a True si da errores en producción 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # o el dominio real
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'AppCoder', 'static', 'AppCoder')]  # solo para desarrollo
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # solo para producción
-
-# Para que Django sepa dónde buscar los archivos estáticos en desarrollo, debes configurar STATICFILES_DIRS en tu archivo settings.py. 
-# Esto hará que Django busque los archivos estáticos en la carpeta static/ de tu aplicación
-# en lugar de en staticfiles/. Luego, puedes usar STATIC_URL para especificar la URL de tu carpeta estática en desarrollo.
-# En producción, debes usar STATIC_ROOT para especificar dónde se recopilarán los archivos estáticos.
-# STATIC_ROOT es la ubicación donde se recopilarán todos los archivos estáticos cuando ejecutes el comando `collectstatic`.
-# En desarrollo, puedes usar STATICFILES_DIRS para especificar
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # solo para producción
-# Para que Django sepa dónde buscar los archivos estáticos en producción, debes configurar STATICFILES_DIRS en tu archivo settings.py. 
-# Esto hará que Django busque los archivos estáticos en la carpeta static/ de tu proyecto en lugar de en staticfiles/. 
-# Luego, puedes usar STATIC_URL para especificar la URL de tu carpeta estática en producción.
-# ejecutar python manage.py collectstatic cada vez que realices cambios en tus archivos estáticos.
-# Eso copiará todos los archivos de static/ a staticfiles/, desde donde Django espera que se sirvan cuando DEBUG = False

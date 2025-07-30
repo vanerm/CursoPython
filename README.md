@@ -75,15 +75,27 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
   - Animación de [Lottie](https://app.lottiefiles.com/)
   - Botones para regresar al inicio o contactar al administrador a través del formulario de contacto
 
-## 🛠️ Recolección de archivos estáticos en producción
+## 🛠️ Archivos estáticos y modo producción
 
 Este proyecto usa archivos estáticos (CSS, JS, imágenes) ubicados en `AppCoder/static/AppCoder/`.
 
-Para servir estos archivos correctamente en modo producción (`DEBUG = False`), primero ejecutá:
+Para servir estos archivos correctamente cuando `DEBUG = False` (modo producción), primero ejecutar el siguiente comando:
 
 ```bash
 python manage.py collectstatic
 ```
+
+Esto recopilará todos los archivos estáticos en la carpeta `staticfiles/`, desde donde deben ser servidos en producción.
+
+**IMPORTANTE:**  
+El servidor de desarrollo de Django (`python manage.py runserver`) **no está pensado para servir archivos estáticos con `DEBUG = False`**. Aunque existe una configuración temporal en `urls.py` para pruebas locales, puede fallar al recargar la página (por ejemplo, usando Ctrl+Shift+R o Cmd+Shift+R) y no es confiable para producción real.
+
+- Durante el desarrollo, mantener `DEBUG = True` para evitar problemas con los archivos estáticos.
+- Usar `DEBUG = False` solo para probar páginas de error personalizadas (como la 404).
+- En un entorno de producción real, los archivos estáticos deben ser servidos por un servidor web como Nginx o Apache, no por Django.
+
+**Resumen:**  
+- Si el CSS o los archivos estáticos no se cargan correctamente con `DEBUG = False` usando el servidor de desarrollo, es un comportamiento esperado y no un error del código.
 
 ## Créditos
 
