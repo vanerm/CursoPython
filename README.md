@@ -1,107 +1,167 @@
 # AppCoder - Proyecto Django
 
-## Descripción
+## 📋 Descripción
 
 AppCoder es una aplicación web basada en Django para la gestión de cursos, alumnos y profesores.  
 Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Science en [Coder House](https://www.coderhouse.com/).
 
-## Evidencia
+## 🎥 Evidencia
 [App Coder](https://drive.google.com/file/d/1wy8ufQGuL3V5xY8T-8IrYqRr1peytPdM/view?usp=sharing)
 
-## Funcionalidades
+## 🚀 Instalación y Configuración
 
-- **Pagina de Inicio**
-  - Formulario de suscripción de [Start Bootstrap](https://startbootstrap.com)
-  - Si el usuario no está autenticado, se muestra la página de inicio general
-  - Si el usuario está autenticado, se muestra la página de inicio personalizada con su nombre y avatar con las iniciales del mismo y acceso al resto de la aplicación (cursos,profesores y alumnos)
-  - Carrousel de cursos
-  - Sección de Información General sobre la aplicación
-  - Sección de Testimonios
-  - Sección de Partners
+### Requisitos previos
+- Python 3.8 o superior
+- pip (gestor de paquetes de Python)
 
-- **Navigation Bar**
-  - Barra de navegación con enlaces a la home, secciones principales y perfil de usuario dependiendo si el usuario está autenticado o no  
+### Pasos de instalación
 
-- **Perfil de Usuario**
-  - Si el usuario está autenticado, puede editar su email y cerrar sesión desde su perfil personalizado.
-  - Avatar con las iniciales de su nombre generado con la API de [UI Avatars](https://ui-avatars.com/)
-  - Permisos de administración para listar, buscar, editar y eliminar cursos, alumnos y profesores. 
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/vanerm/CursoPython.git
+   cd CursoPython/Clase18
+   ```
 
-- **Login, Logout & Registro de Usuarios**
-  - Iniciar sesión
-  - Cerrar sesión
-  - Registro de usuarios
-  - Editar perfil de usuarios
+2. **Instalar dependencias:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-- **Gestión de Cursos**
-  - Listar todos los cursos
-  - Agregar nuevos cursos
-  - Buscar cursos por nombre
-  - Editar cursos existentes
-  - Eliminar cursos existentes
+3. **Ejecutar migraciones:**
+   ```bash
+   python manage.py migrate
+   ```
 
-- **Gestión de Alumnos**
-  - Listar todos los alumnos
-  - Agregar nuevos alumnos
-  - Buscar alumnos por nombre
-  - Editar alumnos existentes
-  - Eliminar alumnos existentes
+4. **Crear superusuario (opcional):**
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-- **Gestión de Profesores**
-  - Listar todos los profesores
-  - Agregar nuevos profesores
-  - Buscar profesores por nombre
-  - Editar profesores existentes
-  - Eliminar profesores existentes
+5. **Ejecutar el servidor:**
+   ```bash
+   python manage.py runserver
+   ```
 
-- **Footer**
-  - Información de contacto y redes sociales
+6. **Acceder a la aplicación:**
+   - Abrir http://127.0.0.1:8000 en el navegador
 
-- **Formulario de Contacto**
-  - Los usuarios pueden enviar consultas a través de un formulario
-  - Validación en tiempo real con JavaScript (campos requeridos y formato de email)
-  - Botón de envío dinámico (se habilita solo cuando todos los campos son válidos)
-  - Procesamiento del backend con Django y validación del servidor
-  - Mensajes de éxito usando el framework de mensajes de Django
-  - Redirección automática a la página de inicio después del envío exitoso
+## ✨ Funcionalidades
 
-- **Diseño Responsivo**
-  - Interfaz moderna y adaptable usando Bootstrap
-  - Tema oscuro con contraste accesible
+### **🏠 Página de Inicio**
+- Formulario de suscripción de [Start Bootstrap](https://startbootstrap.com)
+- Contenido dinámico según el estado de autenticación del usuario
+- Carrousel de cursos
+- Sección de Información General sobre la aplicación
+- Sección de Testimonios
+- Sección de Partners
 
-- **Botón flotante de WhatsApp**
-  - Acceso rápido a WhatsApp para consultas
+### **🧭 Navigation Bar**
+- Barra de navegación adaptativa según el estado de autenticación
+- Enlaces a las secciones principales
+- Acceso rápido al perfil de usuario
 
-- **Mensajes de éxito**
-  - SnackBar de mensajes de éxito al finalizar operaciones exitosas
+### **👤 Perfil de Usuario**
+- Edición de email y contraseña
+- Avatar personalizado con iniciales generado por [UI Avatars](https://ui-avatars.com/)
+- Permisos de administración para gestionar cursos, alumnos y profesores
 
-- **Página 404 Not Found**  
-  - Página 404 not found para manejar errores de ruta no encontrada 
-  - Animación de [Lottie](https://app.lottiefiles.com/)
-  - Botones para regresar al inicio o contactar al administrador a través del formulario de contacto
+### **🔐 Autenticación de Usuarios**
+- Sistema de login/logout
+- Registro de nuevos usuarios
+- Edición de perfiles de usuarios
+- Mensajes de feedback para todas las operaciones
 
-## 🛠️ Archivos estáticos y modo producción
+### **📚 Gestión de Cursos**
+- Listado completo de cursos
+- Agregar nuevos cursos
+- Búsqueda por nombre
+- Edición de cursos existentes
+- Eliminación de cursos
+
+### **👨‍🎓 Gestión de Alumnos**
+- Listado completo de alumnos
+- Agregar nuevos alumnos
+- Búsqueda por nombre
+- Edición de alumnos existentes
+- Eliminación de alumnos
+
+### **👨‍🏫 Gestión de Profesores**
+- Listado completo de profesores
+- Agregar nuevos profesores
+- Búsqueda por nombre
+- Edición de profesores existentes
+- Eliminación de profesores
+
+### **📞 Formulario de Contacto**
+- Envío de consultas a través de formulario web
+- **Validación en tiempo real** con JavaScript (campos requeridos y formato de email)
+- **Botón de envío dinámico** (se habilita solo cuando todos los campos son válidos)
+- **Procesamiento del backend** con Django y validación del servidor
+- **Mensajes de éxito** usando el framework de mensajes de Django
+- **Redirección automática** a la página de inicio después del envío exitoso
+
+### **🎨 Diseño y UX**
+- **Diseño responsivo** con Bootstrap
+- **Tema oscuro** con contraste accesible
+- **Botón flotante de WhatsApp** para consultas rápidas
+- **SnackBar de mensajes** de éxito al finalizar operaciones
+- **Página 404 personalizada** con animación de [Lottie](https://app.lottiefiles.com/)
+
+## 🛠️ Configuración de Archivos Estáticos
 
 Este proyecto usa archivos estáticos (CSS, JS, imágenes) ubicados en `AppCoder/static/AppCoder/`.
 
-Para servir estos archivos correctamente cuando `DEBUG = False` (modo producción), primero ejecutar el siguiente comando:
+### Para desarrollo (`DEBUG = True`):
+Los archivos estáticos se sirven automáticamente por Django.
 
-```bash
-python manage.py collectstatic
-```
+### Para producción (`DEBUG = False`):
+1. **Ejecutar el comando de recolección:**
+   ```bash
+   python manage.py collectstatic
+   ```
 
-Esto recopilará todos los archivos estáticos en la carpeta `staticfiles/`, desde donde deben ser servidos en producción.
+2. **Configurar servidor web:**
+   - Los archivos se recopilan en la carpeta `staticfiles/`
+   - En producción, usar Nginx o Apache para servir `/static/`
 
-**IMPORTANTE:**  
-El servidor de desarrollo de Django (`python manage.py runserver`) **no está pensado para servir archivos estáticos con `DEBUG = False`**. Aunque existe una configuración temporal en `urls.py` para pruebas locales, puede fallar al recargar la página (por ejemplo, usando Ctrl+Shift+R o Cmd+Shift+R) y no es confiable para producción real.
+### ⚠️ Nota importante:
+El servidor de desarrollo de Django (`python manage.py runserver`) **no está pensado para servir archivos estáticos con `DEBUG = False`**. Si el CSS no se carga correctamente en este modo, es un comportamiento esperado.
 
-- Durante el desarrollo, mantener `DEBUG = True` para evitar problemas con los archivos estáticos.
-- Usar `DEBUG = False` solo para probar páginas de error personalizadas (como la 404).
-- En un entorno de producción real, los archivos estáticos deben ser servidos por un servidor web como Nginx o Apache, no por Django.
+## 🛡️ Seguridad
 
-**Resumen:**  
-- Si el CSS o los archivos estáticos no se cargan correctamente con `DEBUG = False` usando el servidor de desarrollo, es un comportamiento esperado y no un error del código.
+- **Autenticación requerida** para operaciones de administración
+- **Validación de formularios** tanto en frontend como backend
+- **Tokens CSRF** para protección contra ataques
+- **Validación de datos** en todas las operaciones
 
-## Créditos
+## 📱 Tecnologías Utilizadas
 
-Este proyecto fue desarrollado como parte de la materia de Python de la Diplomatura de Data Science en [Coder House](https://www.coderhouse.com/)
+- **Backend:** Django 5.2.3
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Framework CSS:** Bootstrap 5
+- **Base de datos:** SQLite
+- **APIs externas:** Start Bootstrap Forms, UI Avatars, Lottie
+
+## 🤝 Contribución
+
+Este es un proyecto educativo desarrollado como parte del curso de Python en Coder House.
+
+## 📄 Licencia
+
+Este proyecto es de uso educativo.
+
+## 👨‍💻 Autor
+
+Desarrollado como parte de la materia de Python de la Diplomatura de Data Science en [Coder House](https://www.coderhouse.com/).
+
+## 👋 About Me
+
+¡Hola! Soy **Vanesa Mizrahi**, desarrolladora mobile iOS y apasionada por los datos y el aprendizaje continuo.
+
+### 🔗 Conecta conmigo
+- **LinkedIn:** [Vanesa Mizrahi](https://www.linkedin.com/in/vanesamizrahi/)
+
+### 💡 Sobre este proyecto
+Este proyecto fue desarrollado como parte de mi formación en **Data Science** en Coder House, donde aprendí a crear aplicaciones web completas con Django, desde la concepción hasta el despliegue.
+
+¡Gracias por revisar mi trabajo! 🚀
