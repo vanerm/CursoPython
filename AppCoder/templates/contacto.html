@@ -25,6 +25,14 @@
             .contacto-bg .invalid-feedback {
                 color: #222 !important;
             }
+            .form-control.is-invalid {
+                border-color: #dc3545 !important;
+                box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+            }
+            .form-control.is-valid {
+                border-color: #198754 !important;
+                box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25) !important;
+            }
         </style>
     </head>   
 
@@ -33,28 +41,29 @@
             <div class="col-12 contacto-bg">
                 <h1>Contacto</h1>
                 <p>Si tienes alguna duda, por favor completa el siguiente formulario:</p>
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form id="contactForm" data-sb-form-api-token="23ec1bc0-2f1a-4fa4-b7f5-516d4bdc8510" method="POST" action="{% url 'contacto' %}">
+                    {% csrf_token %}
                     <!-- Name input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="name" type="text" placeholder=" " data-sb-validations="required" />
+                        <input class="form-control" id="name" name="name" type="text" placeholder=" " data-sb-validations="required" />
                         <label for="name">Nombre completo</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre.</div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="email" type="email" placeholder=" " data-sb-validations="required,email" />
+                        <input class="form-control" id="email" name="email" type="email" placeholder=" " data-sb-validations="required,email" />
                         <label for="email">Email</label>
                         <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere un email.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">El email no es válido.</div>
                     </div>
                     <!-- Message input-->
                     <div class="form-floating mb-3">        
-                        <textarea class="form-control" id="message" type="text" placeholder=" " style="height: 10rem;" data-sb-validations="required"></textarea>
+                        <textarea class="form-control" id="message" name="message" type="text" placeholder=" " style="height: 10rem;" data-sb-validations="required"></textarea>
                         <label for="message">Mensaje</label>
                         <div class="invalid-feedback" data-sb-feedback="message:required">Se requiere un mensaje.</div>
                     </div>
                     <!-- Submit Button-->
-                    <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button>
+                    <button class="btn btn-primary btn-lg" id="contactSubmitButton" type="submit">Enviar</button>
                     <br>
                     <br>
                 </form>
@@ -74,5 +83,192 @@
         </div>
     </div>  
     <br>
-    <br> 
+    <br>
+
+    <!-- Script para validación del formulario -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const submitButton = document.getElementById('contactSubmitButton');
+
+            // Estado de validación de cada campo
+            let nameValid = false;
+            let emailValid = false;
+            let messageValid = false;
+
+            // Función para validar email
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Función para mostrar error
+            function showError(input, message) {
+                input.classList.remove('is-valid');
+                input.classList.add('is-invalid');
+                const feedback = input.parentNode.querySelector('.invalid-feedback');
+                if (feedback) {
+                    feedback.style.display = 'block';
+                    feedback.textContent = message;
+                }
+            }
+
+            // Función para mostrar éxito
+            function showSuccess(input) {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+                const feedback = input.parentNode.querySelector('.invalid-feedback');
+                if (feedback) {
+                    feedback.style.display = 'none';
+                }
+            }
+
+            // Función para verificar si el formulario es válido
+            function checkFormValidity() {
+                const isFormValid = nameValid && emailValid && messageValid;
+                
+                if (isFormValid) {
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('btn-secondary');
+                    submitButton.classList.add('btn-primary');
+                    submitButton.textContent = 'Enviar';
+                } else {
+                    submitButton.disabled = true;
+                    submitButton.classList.remove('btn-primary');
+                    submitButton.classList.add('btn-secondary');
+                    submitButton.textContent = 'Complete todos los campos';
+                }
+            }
+
+            // Validar nombre
+            nameInput.addEventListener('blur', function() {
+                if (nameInput.value.trim() === '') {
+                    showError(nameInput, 'Se requiere un nombre.');
+                    nameValid = false;
+                } else {
+                    showSuccess(nameInput);
+                    nameValid = true;
+                }
+                checkFormValidity();
+            });
+
+            // Validar email
+            emailInput.addEventListener('blur', function() {
+                if (emailInput.value.trim() === '') {
+                    showError(emailInput, 'Se requiere un email.');
+                    emailValid = false;
+                } else if (!isValidEmail(emailInput.value)) {
+                    showError(emailInput, 'El email no es válido.');
+                    emailValid = false;
+                } else {
+                    showSuccess(emailInput);
+                    emailValid = true;
+                }
+                checkFormValidity();
+            });
+
+            // Validar mensaje
+            messageInput.addEventListener('blur', function() {
+                if (messageInput.value.trim() === '') {
+                    showError(messageInput, 'Se requiere un mensaje.');
+                    messageValid = false;
+                } else {
+                    showSuccess(messageInput);
+                    messageValid = true;
+                }
+                checkFormValidity();
+            });
+
+            // Validar formulario al enviar
+            form.addEventListener('submit', function(e) {
+                // Validar todos los campos antes de enviar
+                let isValid = true;
+
+                // Validar nombre
+                if (nameInput.value.trim() === '') {
+                    showError(nameInput, 'Se requiere un nombre.');
+                    nameValid = false;
+                    isValid = false;
+                } else {
+                    showSuccess(nameInput);
+                    nameValid = true;
+                }
+
+                // Validar email
+                if (emailInput.value.trim() === '') {
+                    showError(emailInput, 'Se requiere un email.');
+                    emailValid = false;
+                    isValid = false;
+                } else if (!isValidEmail(emailInput.value)) {
+                    showError(emailInput, 'El email no es válido.');
+                    emailValid = false;
+                    isValid = false;
+                } else {
+                    showSuccess(emailInput);
+                    emailValid = true;
+                }
+
+                // Validar mensaje
+                if (messageInput.value.trim() === '') {
+                    showError(messageInput, 'Se requiere un mensaje.');
+                    messageValid = false;
+                    isValid = false;
+                } else {
+                    showSuccess(messageInput);
+                    messageValid = true;
+                }
+
+                // Actualizar estado del botón
+                checkFormValidity();
+
+                // Si no es válido, prevenir envío
+                if (!isValid) {
+                    e.preventDefault();
+                    // Hacer scroll al primer campo con error
+                    const firstError = form.querySelector('.is-invalid');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+                // Si es válido, permitir el envío normal del formulario
+            });
+
+            // Limpiar validación al escribir
+            nameInput.addEventListener('input', function() {
+                if (nameInput.value.trim() !== '') {
+                    showSuccess(nameInput);
+                    nameValid = true;
+                } else {
+                    nameValid = false;
+                }
+                checkFormValidity();
+            });
+
+            emailInput.addEventListener('input', function() {
+                if (emailInput.value.trim() !== '' && isValidEmail(emailInput.value)) {
+                    showSuccess(emailInput);
+                    emailValid = true;
+                } else {
+                    emailValid = false;
+                }
+                checkFormValidity();
+            });
+
+            messageInput.addEventListener('input', function() {
+                if (messageInput.value.trim() !== '') {
+                    showSuccess(messageInput);
+                    messageValid = true;
+                } else {
+                    messageValid = false;
+                }
+                checkFormValidity();
+            });
+
+            // Inicializar el botón como deshabilitado
+            checkFormValidity();
+        });
+    </script>
 {% endblock %}

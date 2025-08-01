@@ -192,6 +192,20 @@ def editar_profesor(request, id):
 
 # Contacto
 def contacto(request):
+    if request.method == "POST":
+        # Obtener datos del formulario
+        nombre = request.POST.get('name')
+        email = request.POST.get('email')
+        mensaje = request.POST.get('message')
+        
+        # Validación básica
+        if nombre and email and mensaje:
+            # Use messages framework to show success message
+            messages.success(request, "¡Mensaje enviado exitosamente!")
+            return redirect('inicio')
+        else:
+            messages.error(request, "Por favor, complete todos los campos correctamente.")
+    
     return render(request, "contacto.html")
 
 # Login
