@@ -6,7 +6,7 @@ AppCoder es una aplicación web basada en Django para la gestión de cursos, alu
 Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Science en [Coder House](https://www.coderhouse.com/).
 
 ## 🎥 Evidencia
-[App Coder](https://drive.google.com/file/d/1wy8ufQGuL3V5xY8T-8IrYqRr1peytPdM/view?usp=sharing)
+[App Coder](https://drive.google.com/file/d/17egvA7ELSF8jHT6y4vwKYcs4KMTPVdMV/view?usp=sharing)
 
 ## 🚀 Instalación y Configuración
 
