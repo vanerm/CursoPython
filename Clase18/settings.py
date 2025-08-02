@@ -149,3 +149,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # o el dominio real
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'AppCoder', 'static', 'AppCoder')]  # solo para desarrollo
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # solo para producción
+
+# Configuración para archivos de media (avatares)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

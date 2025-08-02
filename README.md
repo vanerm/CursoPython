@@ -59,10 +59,14 @@ Fue desarrollada como parte de la materia de Python de la Diplomatura de Data Sc
 - Barra de navegación adaptativa según el estado de autenticación
 - Enlaces a las secciones principales
 - Acceso rápido al perfil de usuario
+- Avatar personalizado si existe
+- Iniciales como fallback si no hay avatar
 
 ### **👤 Perfil de Usuario**
 - Edición de email y contraseña
 - Avatar personalizado con iniciales generado por [UI Avatars](https://ui-avatars.com/)
+- Campo de subida de archivos para avatares
+- Validación de imágenes (solo acepta archivos de imagen)
 - Permisos de administración para gestionar cursos, alumnos y profesores
 
 ### **🔐 Autenticación de Usuarios**

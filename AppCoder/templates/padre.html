@@ -81,8 +81,13 @@
                 <div class="dropdown ms-3">
                     <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#"
                         role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=random&color=fff"
-                            alt="Avatar" width="32" height="32" class="rounded-circle me-2">
+                        {% if user.profile.avatar %}
+                            <img src="{{ user.profile.avatar.url }}" alt="Avatar" width="32" height="32" 
+                                 class="rounded-circle me-2" style="object-fit: cover;">
+                        {% else %}
+                            <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=random&color=fff"
+                                alt="Avatar" width="32" height="32" class="rounded-circle me-2">
+                        {% endif %}
                         <span>{{ user.username }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">

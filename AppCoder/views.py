@@ -9,6 +9,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from AppCoder.models import Profile
+from AppCoder.forms import ProfileForm
 
 # Create your views here.
 def inicio(request):
@@ -258,14 +260,24 @@ def perfil(request):
 @login_required
 def editar_perfil(request):
     usuario = request.user
+    
+    # Obtener o crear el perfil del usuario
+    profile, created = Profile.objects.get_or_create(user=usuario)
+    
     if request.method == "POST":
         mi_formulario = UserEditForm(request.POST)
-        if mi_formulario.is_valid():
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        
+        if mi_formulario.is_valid() and profile_form.is_valid():
             informacion = mi_formulario.cleaned_data
             usuario.email = informacion["email"]
             password = informacion["password1"]
             usuario.set_password(password)
             usuario.save()
+            
+            # Guardar el avatar
+            profile_form.save()
+            
             messages.success(request, "Perfil actualizado exitosamente")
             return redirect('inicio')
             
@@ -273,7 +285,14 @@ def editar_perfil(request):
         mi_formulario = UserEditForm(initial={
             "email": usuario.email
         })
-    return render(request, "editar_perfil.html", {"miFormulario": mi_formulario, "usuario": usuario})
+        profile_form = ProfileForm(instance=profile)
+    
+    return render(request, "editar_perfil.html", {
+        "miFormulario": mi_formulario, 
+        "profileForm": profile_form,
+        "usuario": usuario,
+        "profile": profile
+    })
 
 # Page 404 Not Found
 def error_personalizado(request):

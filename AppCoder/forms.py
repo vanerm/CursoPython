@@ -1,5 +1,5 @@
 from django import forms    
-from AppCoder.models import Curso
+from AppCoder.models import Curso, Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -31,5 +31,20 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = ['email', 'password1', 'password2']
         help_texts = {k: "" for k in fields}
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['avatar']
+        labels = {
+            'avatar': 'Avatar (opcional)'
+        }
+        widgets = {
+            'avatar': forms.FileInput(attrs={
+                'class': 'form-control',
+                'accept': 'image/*',
+                'style': 'color: white;'
+            })
+        }
 
    

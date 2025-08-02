@@ -27,3 +27,7 @@ urlpatterns = [
 # Agregar esto solo si estás sirviendo estáticos en desarrollo o pruebas con DEBUG=False
 if not settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Servir archivos de media en desarrollo
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

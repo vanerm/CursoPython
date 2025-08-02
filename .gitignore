@@ -8,3 +8,6 @@ db.sqlite3
 
 # Ignorar archivos de entorno
 .env
+
+# Ignorar archivos de media (avatares)
+/media/

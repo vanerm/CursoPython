@@ -10,8 +10,13 @@
         <div class="col-lg-5">
             <div class="card border-white shadow-lg rounded-4" style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(6px);">
                 <div class="card-body text-center text-white">
-                    <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=random&color=fff"
-                         class="rounded-circle mb-3" width="100" height="100" alt="Avatar">
+                    {% if user.profile.avatar %}
+                            <img src="{{ user.profile.avatar.url }}" alt="Avatar" width="100" height="100" 
+                                 class="rounded-circle me-2" style="object-fit: cover;">
+                        {% else %}
+                            <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=random&color=fff"
+                                alt="Avatar" width="100" height="100" class="rounded-circle me-2">
+                        {% endif %}
                     
                     <h3 class="mt-3 mb-1">{{ user.username }}</h3>
                     <small class="text-muted d-block mb-3">Usuario registrado</small>
