@@ -163,7 +163,7 @@ Desarrollado como parte de la materia de Python de la Diplomatura de Data Scienc
 ¡Hola! Soy **Vanesa Mizrahi**, desarrolladora mobile iOS y apasionada por los datos y el aprendizaje continuo.
 
 ### 🔗 Conecta conmigo
-- **LinkedIn:** [Vanesa Mizrahi](https://www.linkedin.com/in/vanesamizrahi/)
+- **LinkedIn:** [Vanesa Mizrahi](www.linkedin.com/in/vanesamizrahi)
 
 ### 💡 Sobre este proyecto
 Este proyecto fue desarrollado como parte de mi formación en **Data Science** en Coder House, donde aprendí a crear aplicaciones web completas con Django, desde la concepción hasta el despliegue.
